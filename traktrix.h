@@ -1,25 +1,26 @@
 #ifndef _TRACTRIX_H
 #define _TRACTRIX_H
 #include <iostream>
-#include <math.h>
-
-// a*log((a+sqrt(a*a-y*y)/y)-sqrt(a*a-y*y)
 
 namespace ns {
-    class traktrix {
+    struct Coordinate {
+        int x;
+        int y;
+        Coordinate(double x = 0, double y = 0): x(x), y(y) {};
+    };
+
+    class Traktrix {
     private:
-        double y;
         double a;
     public:
-        Traktrix(double len = 1);
-        Traktrix(double &y, double len = 1);
-        Traktrix(double x, double y, double len = 1);
+        Traktrix(double a = 1): a(a) {};
 
-        double area() const { return (3.14159*a*a)/2; }
-        double len() const{ return -a*log(sin(y)); }
-        double rad() const{ return a*(cos(y)/sin(y)); }
-        double x(double x) const;
-        char *frm() const;
+        Coordinate intersection() const;
+        double length() const;
+        double radius() const;
+        double firstSquare() const;
+        double secondSquare() const;
+        double volume() const;
     };
 }
 
